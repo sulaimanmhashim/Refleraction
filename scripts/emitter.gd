@@ -2,18 +2,17 @@ extends Node2D
 
 var MAX_BOUNCES = 10
 var MAX_LENGTH = 1000
-var victory
 
 @onready var line = $Line2D
 @onready var ray = $Ray
 @onready var sprite = $Sprite2D
-
-func _ready():
-	victory=false
+@onready var victory = false
 
 func _process(_delta):
 	var prev = null
 	var first_medium = null
+	var second_medium = null
+	var prev_internal = false
 	var bounces = 0
 	if not victory:
 		line.clear_points()
@@ -27,6 +26,8 @@ func _process(_delta):
 			var target
 			var collider
 			var normal
+			var in_dir
+			var out_dir
 			
 			while true:
 				ray.clear_exceptions()
@@ -47,7 +48,11 @@ func _process(_delta):
 				target = ray.get_collision_point()
 				collider = ray.get_collider()
 				normal = ray.get_collision_normal()
+				in_dir = target-origin
+				if normal.is_normalized():
+					out_dir = in_dir.bounce(normal)
 				prev = collider
+				origin = target
 				
 				line.add_point(line.to_local(target))
 				
@@ -56,40 +61,38 @@ func _process(_delta):
 					break	
 				
 				if collider.is_in_group("mirror"):
-					var in_dir = target-origin
-					var out_dir = in_dir.bounce(normal)
-					
-					origin = target
 					end = out_dir
 					ray.force_raycast_update()
 				
 				if collider.is_in_group("medium"):
+					if second_medium!=null and not prev_internal:
+						first_medium=second_medium
+					else:
+						prev_internal = false
 					if first_medium==null:
-						#print(collider.get_parent().get_name())
+						#print("first medium: ", collider.get_parent().get_name())
 						first_medium=collider
-						continue
-					if first_medium!=null:
-						#print("this")
-						var in_dir = target-origin
+					else:
+						second_medium=collider
+						#print("second medium: ", collider.get_parent().get_name())
 						var normal_angle = (-normal).angle()
 						var incident_angle  = (-normal).angle_to(in_dir)
 						
 						var refracted_angle = handle_angle(	incident_angle,
 															normal_angle,
 															first_medium.get_name(),
-															collider.get_name())
-						
-						if refracted_angle == INF:
-							var out_dir = in_dir.bounce(normal)
-							
-							origin = target
-							end = out_dir
-							ray.force_raycast_update()
-							continue
+															second_medium.get_name())
 						
 						origin = target
-						end = Vector2.from_angle(refracted_angle)
-						ray.force_raycast_update()
+						
+						if refracted_angle == INF:
+							prev_internal = true
+							end = out_dir
+							ray.force_raycast_update()
+						else:
+							end = Vector2.from_angle(refracted_angle)
+							ray.force_raycast_update()
+						
 				bounces+=1
 				if bounces>=MAX_BOUNCES:
 					break

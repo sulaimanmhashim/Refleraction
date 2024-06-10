@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmc3xuckfx45t"]
+[gd_scene load_steps=8 format=3 uid="uid://cmc3xuckfx45t"]
 
 [ext_resource type="PackedScene" uid="uid://dhgrdfn5b2wr5" path="res://ui/overlay.tscn" id="1_262c3"]
 [ext_resource type="PackedScene" uid="uid://rxsxs7brmcjs" path="res://level_prop/Absorber.tscn" id="2_a1let"]
 [ext_resource type="PackedScene" uid="uid://bh63x1bmtey25" path="res://level_prop/Water.tscn" id="2_gbpak"]
 [ext_resource type="PackedScene" uid="uid://1mvijyak3vuq" path="res://level_prop/Glass.tscn" id="2_lqpx5"]
 [ext_resource type="PackedScene" uid="uid://djajthv4aksdk" path="res://level_prop/Emitter.tscn" id="3_j2ih6"]
+[ext_resource type="PackedScene" uid="uid://ixwe51mcso6j" path="res://level_prop/Air.tscn" id="4_41nwd"]
+[ext_resource type="PackedScene" uid="uid://bsji8jka3uei0" path="res://level_prop/Mirror.tscn" id="7_dhbgj"]
 
 [node name="Level4" type="Node2D"]
 
@@ -13,15 +15,23 @@
 [node name="Overlay" parent="CanvasLayer" instance=ExtResource("1_262c3")]
 
 [node name="Glass" parent="." instance=ExtResource("2_lqpx5")]
-position = Vector2(864, 324)
-scale = Vector2(288, 324)
+position = Vector2(576, 108)
+scale = Vector2(576, 108)
 
 [node name="Water" parent="." instance=ExtResource("2_gbpak")]
-position = Vector2(288, 324)
-scale = Vector2(288, 324)
+position = Vector2(576, 324)
+scale = Vector2(576, 108)
+
+[node name="Air" parent="." instance=ExtResource("4_41nwd")]
+position = Vector2(576, 540)
+scale = Vector2(576, 108)
 
 [node name="Absorber" parent="." instance=ExtResource("2_a1let")]
-position = Vector2(902, 174)
+position = Vector2(902, 108)
 
 [node name="Emitter" parent="." instance=ExtResource("3_j2ih6")]
-position = Vector2(250, 474)
+position = Vector2(250, 108)
+
+[node name="Mirror" parent="." instance=ExtResource("7_dhbgj")]
+position = Vector2(576, 91)
+rotation = 1.5708
