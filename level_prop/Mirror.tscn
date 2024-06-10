@@ -11,5 +11,5 @@ size = Vector2(250, 30)
 shape = SubResource("RectangleShape2D_cu7fq")
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" groups=["mirror"]]
-color = Color(0.716296, 0.716296, 0.716296, 1)
+color = Color(0.57, 0.57, 0.57, 1)
 polygon = PackedVector2Array(-125, -15, 125, -15, 125, 15, -125, 15)

@@ -1,6 +1,7 @@
 extends AudioStreamPlayer
 
 const music_bg = preload("res://assets/music_bg.mp3")
+var victory = false
 
 func _play_music(music: AudioStream, volume = 0.0):
 	if stream==music:

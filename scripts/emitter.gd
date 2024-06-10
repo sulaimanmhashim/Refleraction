@@ -65,11 +65,11 @@ func _process(_delta):
 				
 				if collider.is_in_group("medium"):
 					if first_medium==null:
-						print(collider.get_parent().get_name())
+						#print(collider.get_parent().get_name())
 						first_medium=collider
 						continue
 					if first_medium!=null:
-						print("this")
+						#print("this")
 						var in_dir = target-origin
 						var normal_angle = (-normal).angle()
 						var incident_angle  = (-normal).angle_to(in_dir)
@@ -78,6 +78,15 @@ func _process(_delta):
 															normal_angle,
 															first_medium.get_name(),
 															collider.get_name())
+						
+						if refracted_angle == INF:
+							var out_dir = in_dir.bounce(normal)
+							
+							origin = target
+							end = out_dir
+							ray.force_raycast_update()
+							continue
+						
 						origin = target
 						end = Vector2.from_angle(refracted_angle)
 						ray.force_raycast_update()
@@ -110,6 +119,15 @@ func handle_angle(incident, normal, incident_med, refracted_med):
 		n2=air
 	
 	var sin_ang = (n1 / n2) * sin(incident)
+	#print(sin_ang)
+	sin_ang = max(-1.0, min(1.0, sin_ang))
+	#print(sin_ang)
+	
+	if sin_ang>=1:
+		return INF
+	if sin_ang<=-1:
+		return INF
+	
 	var refracted = asin(sin_ang)
 	
 	return refracted+normal

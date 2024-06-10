@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7rl5yurnlw32"]
+[gd_scene load_steps=6 format=3 uid="uid://b7rl5yurnlw32"]
 
 [ext_resource type="PackedScene" uid="uid://djajthv4aksdk" path="res://level_prop/Emitter.tscn" id="1_f867l"]
 [ext_resource type="PackedScene" uid="uid://dhgrdfn5b2wr5" path="res://ui/overlay.tscn" id="1_kenjx"]
 [ext_resource type="PackedScene" uid="uid://rxsxs7brmcjs" path="res://level_prop/Absorber.tscn" id="2_jo0ui"]
 [ext_resource type="PackedScene" uid="uid://ixwe51mcso6j" path="res://level_prop/Air.tscn" id="2_mglc2"]
+[ext_resource type="PackedScene" uid="uid://dn1edcigyb72e" path="res://level_prop/Circular_Mirror.tscn" id="5_3sgqg"]
 
 [node name="Level1" type="Node2D"]
 
@@ -20,3 +21,7 @@ position = Vector2(200, 324)
 
 [node name="Absorber" parent="." instance=ExtResource("2_jo0ui")]
 position = Vector2(952, 324)
+
+[node name="CircularMirror" parent="." instance=ExtResource("5_3sgqg")]
+position = Vector2(576, 324)
+scale = Vector2(0.3, 0.3)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn1edcigyb72e"]
+
+[ext_resource type="Texture2D" uid="uid://cc71u7g1lgeh0" path="res://assets/circle_grey.png" id="1_iidql"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4n51"]
+radius = 275.0
+
+[node name="CircularMirror" type="Node2D" groups=["mirror"]]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["mirror"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" groups=["mirror"]]
+shape = SubResource("CircleShape2D_o4n51")
+
+[node name="CircleGrey" type="Sprite2D" parent="StaticBody2D" groups=["mirror"]]
+texture = ExtResource("1_iidql")
