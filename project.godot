@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Music="*res://ui/music.tscn"
-WinScreen="*res://ui/win_screen.tscn"
 
 [display]
 
