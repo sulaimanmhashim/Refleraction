@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsji8jka3uei0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu7fq"]
+size = Vector2(250, 30)
+
+[node name="Mirror" type="Node2D" groups=["mirror"]]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["mirror"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" groups=["mirror"]]
+shape = SubResource("RectangleShape2D_cu7fq")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" groups=["mirror"]]
+color = Color(0.716296, 0.716296, 0.716296, 1)
+polygon = PackedVector2Array(-125, -15, 125, -15, 125, 15, -125, 15)

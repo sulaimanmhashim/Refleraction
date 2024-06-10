@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://rxsxs7brmcjs"]
+
+[ext_resource type="Script" path="res://scripts/absorber.gd" id="1_lhcws"]
+[ext_resource type="Texture2D" uid="uid://ivnmt10y1oxt" path="res://assets/Refleraction_absorberfull-sheets.png" id="2_1y1c0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6s0h"]
+atlas = ExtResource("2_1y1c0")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px2xg"]
+atlas = ExtResource("2_1y1c0")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2svm"]
+atlas = ExtResource("2_1y1c0")
+region = Rect2(2880, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyokb"]
+atlas = ExtResource("2_1y1c0")
+region = Rect2(3600, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvff2"]
+atlas = ExtResource("2_1y1c0")
+region = Rect2(4320, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s0vw"]
+atlas = ExtResource("2_1y1c0")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cddel"]
+atlas = ExtResource("2_1y1c0")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j61y"]
+atlas = ExtResource("2_1y1c0")
+region = Rect2(5040, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u4aw"]
+atlas = ExtResource("2_1y1c0")
+region = Rect2(5760, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_satun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6s0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_px2xg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2svm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyokb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvff2")
+}],
+"loop": false,
+"name": &"charging",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s0vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cddel")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j61y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u4aw")
+}],
+"loop": true,
+"name": &"full",
+"speed": 2.0
+}]
+
+[node name="Absorber" type="Node2D" groups=["absorber"]]
+script = ExtResource("1_lhcws")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["absorber"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D" groups=["absorber"]]
+scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(-2, -182, -156, -92, -156, 90, -1, 182, 157, 92, 157, -93)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" groups=["absorber"]]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_satun")
+animation = &"charging"
+autoplay = "empty"
+
+[connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

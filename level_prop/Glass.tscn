@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://1mvijyak3vuq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hi2i"]
+size = Vector2(2, 2)
+
+[node name="Glass" type="Node2D" groups=["medium"]]
+
+[node name="Glass" type="Area2D" parent="." groups=["medium"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Glass" groups=["medium"]]
+shape = SubResource("RectangleShape2D_4hi2i")
+
+[node name="Polygon2D" type="Polygon2D" parent="Glass" groups=["medium"]]
+color = Color(0.066, 0.33, 0.1408, 1)
+polygon = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh63x1bmtey25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia112"]
+size = Vector2(2, 2)
+
+[node name="Water" type="Node2D" groups=["medium"]]
+
+[node name="Water" type="Area2D" parent="." groups=["medium"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water" groups=["medium"]]
+shape = SubResource("RectangleShape2D_ia112")
+
+[node name="Polygon2D" type="Polygon2D" parent="Water" groups=["medium"]]
+color = Color(0.0355, 0.271575, 0.71, 1)
+polygon = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1)

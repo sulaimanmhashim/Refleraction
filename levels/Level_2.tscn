@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://di2cqaq4tmbo7"]
+
+[ext_resource type="PackedScene" uid="uid://dhgrdfn5b2wr5" path="res://ui/overlay.tscn" id="1_1fpsy"]
+[ext_resource type="PackedScene" uid="uid://ixwe51mcso6j" path="res://level_prop/Air.tscn" id="2_r3d3o"]
+[ext_resource type="PackedScene" uid="uid://bsji8jka3uei0" path="res://level_prop/Mirror.tscn" id="2_wqa8b"]
+[ext_resource type="PackedScene" uid="uid://djajthv4aksdk" path="res://level_prop/Emitter.tscn" id="3_eaj5r"]
+[ext_resource type="PackedScene" uid="uid://rxsxs7brmcjs" path="res://level_prop/Absorber.tscn" id="4_di38x"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" parent="CanvasLayer" instance=ExtResource("1_1fpsy")]
+
+[node name="Air" parent="." instance=ExtResource("2_r3d3o")]
+position = Vector2(576, 324)
+scale = Vector2(576, 324)
+
+[node name="Mirror1" parent="." instance=ExtResource("2_wqa8b")]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(752, 324)
+rotation = -1.5708
+
+[node name="Mirror2" parent="." instance=ExtResource("2_wqa8b")]
+position = Vector2(299, 324)
+scale = Vector2(3, 1)
+
+[node name="Emitter" parent="." instance=ExtResource("3_eaj5r")]
+position = Vector2(400, 224)
+
+[node name="Absorber" parent="." instance=ExtResource("4_di38x")]
+position = Vector2(400, 424)

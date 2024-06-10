@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://djajthv4aksdk"]
+
+[ext_resource type="Script" path="res://scripts/emitter.gd" id="1_2ugig"]
+[ext_resource type="Texture2D" uid="uid://b4m6itmogv82l" path="res://assets/Refleraction_emitter-8.png" id="2_n1m8f"]
+
+[node name="Emitter" type="Node2D"]
+light_mask = 3
+visibility_layer = 3
+script = ExtResource("1_2ugig")
+
+[node name="Ray" type="RayCast2D" parent="."]
+exclude_parent = false
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 5.0
+default_color = Color(0.4, 0.8, 0.8, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_n1m8f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
