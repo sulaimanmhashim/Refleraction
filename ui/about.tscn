@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cp16nb78oucbc"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_m3nl7"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_rk3ah"]
 
 [node name="About" type="Control"]
 layout_mode = 3
@@ -9,9 +9,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_m3nl7")
+script = ExtResource("1_rk3ah")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.497, 0.6035, 0.71, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,18 +28,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 50
 
-[node name="Label" type="Label" parent="AspectRatioContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Refleraction"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="AspectRatioContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Made for
 WIG3004 Game Development
@@ -42,7 +51,7 @@ Mohamad Sulaiman bin Mohd Hashim
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Back" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
@@ -50,4 +59,4 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Back"
 
-[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

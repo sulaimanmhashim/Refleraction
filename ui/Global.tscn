@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://co6ifqpkv1u5l"]
 
-[ext_resource type="Script" path="res://scripts/music.gd" id="1_2kxev"]
+[ext_resource type="Script" path="res://scripts/Global.gd" id="1_2kxev"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 autoplay = true

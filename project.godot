@@ -11,18 +11,18 @@ config_version=5
 [application]
 
 config/name="Refleraction"
-run/main_scene="res://ui/main.tscn"
+run/main_scene="res://ui/Main.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(0.0775895, 0.136045, 0.253129, 1)
 config/icon="res://icon.svg"
 
 [autoload]
 
-Music="*res://ui/music.tscn"
+Global="*res://ui/Global.tscn"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

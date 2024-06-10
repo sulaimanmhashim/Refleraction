@@ -1,10 +1,10 @@
 extends Control
 
 func _ready():
-	Music.play_music_level()
+	Global.play_music_level()
 
 func _on_back_button_pressed():
-	get_tree().change_scene_to_file("res://ui/main.tscn")
+	get_tree().change_scene_to_file("res://ui/Main.tscn")
 
 func _on_level_1_pressed():
 	get_tree().change_scene_to_file("res://levels/Level_1.tscn")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c30dlruorbpsc"]
+[gd_scene load_steps=3 format=3 uid="uid://c30dlruorbpsc"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_pfvq6"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_k4xic"]
+[ext_resource type="Texture2D" uid="uid://bjau4n28jnnhk" path="res://assets/Logo_name_150_500.png" id="2_jbr4y"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -9,9 +10,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pfvq6")
+script = ExtResource("1_k4xic")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.497, 0.6035, 0.71, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,13 +29,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_jbr4y")
+
+[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -33,27 +47,28 @@ size_flags_vertical = 4
 text = "Play"
 icon_alignment = 1
 
-[node name="Option" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Option" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Option"
 
-[node name="About" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="About" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "About "
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/About" to="." method="_on_about_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

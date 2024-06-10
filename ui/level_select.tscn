@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbdbxxk0kj2k2"]
 
-[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_fe1rs"]
-[ext_resource type="Theme" uid="uid://bflksirhu6ras" path="res://themes/button_text.tres" id="1_nnqi6"]
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_dly4q"]
+[ext_resource type="Theme" uid="uid://bflksirhu6ras" path="res://themes/button_text.tres" id="2_thudn"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -10,26 +10,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fe1rs")
+script = ExtResource("1_dly4q")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.497, 0.6035, 0.71, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "Select Level"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -37,75 +50,75 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="Level 1" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Level 1" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("1_nnqi6")
+theme = ExtResource("2_thudn")
 text = "1"
 
-[node name="Level 2" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Level 2" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("1_nnqi6")
+theme = ExtResource("2_thudn")
 text = "2"
 
-[node name="Level 3" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Level 3" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("1_nnqi6")
+theme = ExtResource("2_thudn")
 text = "3"
 
-[node name="Level 4" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Level 4" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("1_nnqi6")
+theme = ExtResource("2_thudn")
 text = "4"
 
-[node name="Level 5" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Level 5" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("1_nnqi6")
+theme = ExtResource("2_thudn")
 text = "5"
 
-[node name="Level 6" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Level 6" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("1_nnqi6")
+theme = ExtResource("2_thudn")
 text = "6"
 
-[node name="Level 7" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Level 7" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("1_nnqi6")
+theme = ExtResource("2_thudn")
 text = "7"
 
-[node name="Level 8" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Level 8" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("1_nnqi6")
+theme = ExtResource("2_thudn")
 text = "8"
 
-[node name="Level 9" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Level 9" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("1_nnqi6")
+theme = ExtResource("2_thudn")
 text = "9"
 
-[node name="BackButton" type="Button" parent="VBoxContainer"]
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("1_nnqi6")
+theme = ExtResource("2_thudn")
 text = "Back"
 
-[connection signal="pressed" from="VBoxContainer/GridContainer/Level 1" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/Level 2" to="." method="_on_level_2_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/Level 3" to="." method="_on_level_3_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/Level 4" to="." method="_on_level_4_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/Level 5" to="." method="_on_level_5_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/Level 6" to="." method="_on_level_6_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/Level 7" to="." method="_on_level_7_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/Level 8" to="." method="_on_level_8_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/Level 9" to="." method="_on_level_9_pressed"]
-[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level 2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level 3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level 4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level 5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level 6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level 7" to="." method="_on_level_7_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level 8" to="." method="_on_level_8_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level 9" to="." method="_on_level_9_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

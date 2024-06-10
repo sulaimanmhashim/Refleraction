@@ -10,11 +10,11 @@ func _ready():
 	var popup=pauseButton.get_popup()
 	popup.id_pressed.connect(file_menu)
 	victoryScreen.hide()
-	Music.play_music_level()
+	Global.play_music_level()
 	animPlaying = false
 
 func _process(_delta):
-	if Music.victory:
+	if Global.victory:
 		victoryScreen.show()
 		if not animPlaying:
 			victoryAnim.play("blur")
@@ -31,7 +31,7 @@ func _on_pause_toggled(_toggled_on):
 
 func file_menu(id):
 	if id==1:
-		get_tree().change_scene_to_file("res://ui/level_select.tscn")
+		get_tree().change_scene_to_file("res://ui/Level_Select.tscn")
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://ui/level_select.tscn")
+	get_tree().change_scene_to_file("res://ui/Level_Select.tscn")

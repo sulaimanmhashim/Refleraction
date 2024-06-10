@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cmc3xuckfx45t"]
 
-[ext_resource type="PackedScene" uid="uid://dhgrdfn5b2wr5" path="res://ui/overlay.tscn" id="1_262c3"]
+[ext_resource type="PackedScene" uid="uid://dhgrdfn5b2wr5" path="res://ui/Overlay.tscn" id="1_262c3"]
 [ext_resource type="PackedScene" uid="uid://rxsxs7brmcjs" path="res://level_prop/Absorber.tscn" id="2_a1let"]
 [ext_resource type="PackedScene" uid="uid://bh63x1bmtey25" path="res://level_prop/Water.tscn" id="2_gbpak"]
 [ext_resource type="PackedScene" uid="uid://1mvijyak3vuq" path="res://level_prop/Glass.tscn" id="2_xi0yc"]
@@ -26,7 +26,7 @@ position = Vector2(192, 324)
 scale = Vector2(192, 324)
 
 [node name="Absorber" parent="." instance=ExtResource("2_a1let")]
-position = Vector2(902, 174)
+position = Vector2(960, 174)
 
 [node name="Emitter" parent="." instance=ExtResource("3_j2ih6")]
-position = Vector2(250, 474)
+position = Vector2(192, 474)

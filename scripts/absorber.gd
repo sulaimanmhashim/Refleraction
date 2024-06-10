@@ -9,7 +9,7 @@ var temp
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Music.victory = false
+	Global.victory = false
 	is_full = false
 	is_recieving = false
 	ray = null
@@ -36,5 +36,5 @@ func _on_animated_sprite_2d_animation_finished():
 		is_full=true
 		sprite.play("full")
 		temp.get_parent().victory=true
-		Music.victory = true
+		Global.victory = true
 		#get_tree().paused = true

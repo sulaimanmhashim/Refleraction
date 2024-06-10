@@ -123,12 +123,12 @@ func handle_angle(incident, normal, incident_med, refracted_med):
 	
 	var sin_ang = (n1 / n2) * sin(incident)
 	#print(sin_ang)
-	sin_ang = max(-1.0, min(1.0, sin_ang))
+	#sin_ang = max(-1.0, min(1.0, sin_ang))
 	#print(sin_ang)
 	
-	if sin_ang>=1:
+	if sin_ang > 1:
 		return INF
-	if sin_ang<=-1:
+	if sin_ang < -1:
 		return INF
 	
 	var refracted = asin(sin_ang)
