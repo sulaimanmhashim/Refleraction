@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://djajthv4aksdk"]
 
-[ext_resource type="Script" path="res://scripts/emitter.gd" id="1_2ugig"]
+[ext_resource type="Script" path="res://scripts/Emitter.gd" id="1_2ugig"]
 [ext_resource type="Texture2D" uid="uid://b4m6itmogv82l" path="res://assets/Refleraction_emitter-8.png" id="2_n1m8f"]
 
 [node name="Emitter" type="Node2D"]

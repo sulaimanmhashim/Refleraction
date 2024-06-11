@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://rxsxs7brmcjs"]
 
-[ext_resource type="Script" path="res://scripts/absorber.gd" id="1_lhcws"]
+[ext_resource type="Script" path="res://scripts/Absorber.gd" id="1_lhcws"]
 [ext_resource type="Texture2D" uid="uid://ivnmt10y1oxt" path="res://assets/Refleraction_absorberfull-sheets.png" id="2_1y1c0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6s0h"]
@@ -59,7 +59,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"charging",
-"speed": 1.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,

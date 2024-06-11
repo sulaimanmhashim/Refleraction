@@ -90,6 +90,7 @@ func _process(_delta):
 							end = out_dir
 							ray.force_raycast_update()
 						else:
+							print("\n refracted", bounces)
 							end = Vector2.from_angle(refracted_angle)
 							ray.force_raycast_update()
 						

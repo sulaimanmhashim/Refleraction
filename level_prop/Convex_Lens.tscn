@@ -1,8 +1,123 @@
-[gd_scene format=3 uid="uid://dlvnbtylsbkja"]
+[gd_scene load_steps=19 format=3 uid="uid://dlvnbtylsbkja"]
 
-[node name="ConvexLens" type="Node2D"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_fft1e"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="2_14mn1"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_7fubp"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_k0vig"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="5_0vdpn"]
 
-[node name="Area2D" type="Area2D" parent="."]
+[sub_resource type="Resource" id="Resource_2a3qf"]
+script = ExtResource("2_14mn1")
+texture_idx = 0
+flip = false
+width = 1.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(0, 1, -1, 0, 0, -1, 1, 0)
+[sub_resource type="Resource" id="Resource_ovhnl"]
+script = ExtResource("3_7fubp")
+position = Vector2(-2.14455e-08, -20.2531)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_2a3qf")
+
+[sub_resource type="Resource" id="Resource_21u22"]
+script = ExtResource("2_14mn1")
+texture_idx = 0
+flip = false
+width = 1.1
+
+[sub_resource type="Resource" id="Resource_b7yl2"]
+script = ExtResource("3_7fubp")
+position = Vector2(-2.14455e-08, -20.2531)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_21u22")
+
+[sub_resource type="Resource" id="Resource_haxmy"]
+script = ExtResource("2_14mn1")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_yads5"]
+script = ExtResource("3_7fubp")
+position = Vector2(-2.14455e-08, 19.7469)
+point_in = Vector2(10, -20)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_haxmy")
+
+[sub_resource type="Resource" id="Resource_blddi"]
+script = ExtResource("2_14mn1")
+texture_idx = 6
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_ceyxd"]
+script = ExtResource("3_7fubp")
+position = Vector2(-2.14455e-08, 19.7469)
+point_in = Vector2(0, 0)
+point_out = Vector2(-10, -20)
+properties = SubResource("Resource_blddi")
+
+[sub_resource type="Resource" id="Resource_uoeq2"]
+script = ExtResource("3_7fubp")
+position = Vector2(-4.28909e-08, 19.4937)
+point_in = Vector2(0, 0)
+point_out = Vector2(-10, -20)
+properties = SubResource("Resource_blddi")
+
+[sub_resource type="Resource" id="Resource_kqdr4"]
+script = ExtResource("4_k0vig")
+_points = {
+0: SubResource("Resource_uoeq2"),
+3: SubResource("Resource_ceyxd"),
+4: SubResource("Resource_ovhnl"),
+5: SubResource("Resource_b7yl2"),
+6: SubResource("Resource_yads5")
+}
+_point_order = Array[int]([3, 4, 5, 6, 0, 0])
+_constraints = {
+Array[int]([3, 0]): 15
+}
+_next_key = 7
+_material_overrides = {}
+tessellation_stages = 5
+tessellation_tolerance = 4.0
+curve_bake_interval = 20.0
+
+[sub_resource type="Gradient" id="Gradient_bajjo"]
+colors = PackedColorArray(0.0666667, 0.329412, 0.141176, 1, 0.0666667, 0.329412, 0.141176, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n7ek1"]
+gradient = SubResource("Gradient_bajjo")
+fill_from = Vector2(0.461538, 0.56044)
+fill_to = Vector2(1, 0.593407)
+
+[sub_resource type="Resource" id="Resource_kk03y"]
+script = ExtResource("5_0vdpn")
+_edge_meta_materials = Array[Resource("res://addons/rmsmartshape/materials/edge_material_metadata.gd")]([])
+fill_textures = Array[Texture2D]([SubResource("GradientTexture2D_n7ek1")])
+fill_texture_z_index = 0
+fill_texture_show_behind_parent = false
+fill_texture_scale = 1.0
+fill_texture_absolute_position = false
+fill_texture_absolute_rotation = false
+fill_texture_offset = Vector2(0, 0)
+fill_texture_angle_offset = 0.0
+fill_mesh_offset = 0.0
+render_offset = 0.0
+
+[node name="ConvexLens" type="Node2D" groups=["medium"]]
+
+[node name="Glass" type="StaticBody2D" parent="." groups=["medium"]]
+
+[node name="SS2D_Shape_Closed" type="Node2D" parent="Glass" groups=["medium"]]
+position = Vector2(2.14455e-08, 0.253132)
+script = ExtResource("1_fft1e")
+_points = SubResource("Resource_kqdr4")
+shape_material = SubResource("Resource_kk03y")
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Glass" groups=["medium"]]
+visible = false
+modulate = Color(1, 1, 1, 0.3)
+polygon = PackedVector2Array(-0.207362, 19.432, -1.64849, 16.2551, -2.8716, 12.5392, -3.71383, 8.88192, -4.21914, 5.31254, -2.56713, -4.93428, 2.63629, -12.6171, 3.75059, -7.50009, 4.39515, -1.44535, 4.43159, 1.86036, 4.21926, 5.31255, 3.71395, 8.88194, 2.87172, 12.5392, 0.822187, 18.4104, -4.21895, 11.3095, -4.6882, 10.6022, -4.44121, 10.8644, -4.39453, 10.9578, -3.75, 12.2469)

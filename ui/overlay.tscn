@@ -1,15 +1,51 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhgrdfn5b2wr5"]
+[gd_scene load_steps=16 format=3 uid="uid://dhgrdfn5b2wr5"]
 
-[ext_resource type="Script" path="res://scripts/overlay.gd" id="1_e2pbu"]
+[ext_resource type="Script" path="res://scripts/Overlay.gd" id="1_e2pbu"]
 [ext_resource type="Texture2D" uid="uid://nfixd75k1gn7" path="res://assets/pausebutton.png" id="1_qlx6t"]
 [ext_resource type="Texture2D" uid="uid://ccmcf4nedu2ai" path="res://assets/settings_50x50.png" id="2_57d26"]
 [ext_resource type="Texture2D" uid="uid://r06jq2tkdqi4" path="res://assets/exit_50x50.png" id="3_tgvwk"]
+[ext_resource type="Texture2D" uid="uid://bsv80j2k1neg6" path="res://assets/resume_50x50.png" id="4_6coxv"]
 [ext_resource type="Shader" path="res://assets/overlay.gdshader" id="5_a8xuf"]
 [ext_resource type="Theme" uid="uid://bflksirhu6ras" path="res://themes/button_text.tres" id="6_lb13b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_14dbo"]
 shader = ExtResource("5_a8xuf")
 shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_gqp3g"]
+resource_name = "BLUR"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_2v5k4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vn7fm"]
+_data = {
+"BLUR": SubResource("Animation_gqp3g"),
+"RESET": SubResource("Animation_2v5k4")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_1daho"]
 font_size = 64
@@ -146,31 +182,45 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e2pbu")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_14dbo")
+custom_minimum_size = Vector2(1152, 648)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-ratio = 0.001
-alignment_horizontal = 2
 
-[node name="Pause" type="MenuButton" parent="AspectRatioContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vn7fm")
+}
+
+[node name="Pause" type="MenuButton" parent="."]
 custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 icon = ExtResource("1_qlx6t")
 icon_alignment = 1
 expand_icon = true
-item_count = 2
-popup/item_0/text = "Settings"
-popup/item_0/icon = ExtResource("2_57d26")
+item_count = 3
+popup/item_0/text = "Resume"
+popup/item_0/icon = ExtResource("4_6coxv")
 popup/item_0/id = 0
-popup/item_1/text = "Back"
-popup/item_1/icon = ExtResource("3_tgvwk")
+popup/item_1/text = "Settings"
+popup/item_1/icon = ExtResource("2_57d26")
 popup/item_1/id = 1
+popup/item_2/text = "Back"
+popup/item_2/icon = ExtResource("3_tgvwk")
+popup/item_2/id = 2
 
 [node name="Victory_Screen" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -238,5 +288,6 @@ libraries = {
 "": SubResource("AnimationLibrary_c6gtf")
 }
 
-[connection signal="toggled" from="AspectRatioContainer/Pause" to="." method="_on_pause_toggled"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="toggled" from="Pause" to="." method="_on_pause_toggled"]
 [connection signal="pressed" from="Victory_Screen/Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]

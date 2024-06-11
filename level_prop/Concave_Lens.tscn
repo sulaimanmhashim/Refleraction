@@ -1,0 +1,126 @@
+[gd_scene load_steps=20 format=3 uid="uid://dufj00l7xnmgg"]
+
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_7rryi"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="2_7de63"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_5v5tq"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_g3ate"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="5_co0np"]
+
+[sub_resource type="Resource" id="Resource_22385"]
+script = ExtResource("2_7de63")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_sa1m7"]
+script = ExtResource("3_5v5tq")
+position = Vector2(-10, -20)
+point_in = Vector2(10, 20)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_22385")
+
+[sub_resource type="Resource" id="Resource_k2j6h"]
+script = ExtResource("2_7de63")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_0o8n2"]
+script = ExtResource("3_5v5tq")
+position = Vector2(10, -20)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_k2j6h")
+
+[sub_resource type="Resource" id="Resource_46qx8"]
+script = ExtResource("2_7de63")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_7b6an"]
+script = ExtResource("3_5v5tq")
+position = Vector2(10, 20)
+point_in = Vector2(-10, -20)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_46qx8")
+
+[sub_resource type="Resource" id="Resource_2f5v8"]
+script = ExtResource("2_7de63")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_06qxx"]
+script = ExtResource("3_5v5tq")
+position = Vector2(-10, 20)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_2f5v8")
+
+[sub_resource type="Resource" id="Resource_twlfp"]
+script = ExtResource("2_7de63")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_b3xwt"]
+script = ExtResource("3_5v5tq")
+position = Vector2(-10, -20)
+point_in = Vector2(10, 20)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_twlfp")
+
+[sub_resource type="Resource" id="Resource_xmc3v"]
+script = ExtResource("4_g3ate")
+_points = {
+0: SubResource("Resource_sa1m7"),
+1: SubResource("Resource_0o8n2"),
+2: SubResource("Resource_7b6an"),
+3: SubResource("Resource_06qxx"),
+4: SubResource("Resource_b3xwt")
+}
+_point_order = Array[int]([0, 1, 2, 3, 4])
+_constraints = {
+Array[int]([0, 4]): 15
+}
+_next_key = 5
+_material_overrides = {}
+tessellation_stages = 5
+tessellation_tolerance = 4.0
+curve_bake_interval = 20.0
+
+[sub_resource type="Gradient" id="Gradient_1643j"]
+colors = PackedColorArray(0.0666667, 0.329412, 0.141176, 1, 0.0666667, 0.329412, 0.141176, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ap14w"]
+gradient = SubResource("Gradient_1643j")
+
+[sub_resource type="Resource" id="Resource_7fwyt"]
+script = ExtResource("5_co0np")
+_edge_meta_materials = Array[Resource("res://addons/rmsmartshape/materials/edge_material_metadata.gd")]([])
+fill_textures = Array[Texture2D]([SubResource("GradientTexture1D_ap14w")])
+fill_texture_z_index = 0
+fill_texture_show_behind_parent = false
+fill_texture_scale = 1.0
+fill_texture_absolute_position = false
+fill_texture_absolute_rotation = false
+fill_texture_offset = Vector2(0, 0)
+fill_texture_angle_offset = 0.0
+fill_mesh_offset = 0.0
+render_offset = 0.0
+
+[node name="ConcaveLens" type="Node2D" groups=["medium"]]
+
+[node name="Glass" type="StaticBody2D" parent="." groups=["medium"]]
+
+[node name="SS2D_Shape_Closed" type="Node2D" parent="Glass" groups=["medium"]]
+script = ExtResource("1_7rryi")
+_points = SubResource("Resource_xmc3v")
+shape_material = SubResource("Resource_7fwyt")
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Glass" groups=["medium"]]
+visible = false
+modulate = Color(1, 1, 1, 0.3)
+polygon = PackedVector2Array(-10.1899, -20.1239, 10.1837, -20.1234, 8.59418, -16.5623, 7.36375, -12.6171, 6.25072, -7.49988, 5.60603, -1.44528, 5.56918, 1.86034, 5.78164, 5.31246, 6.28707, 8.88175, 7.12941, 12.5389, 8.35259, 16.2547, 10.1899, 20.1239, -10.1837, 20.1234, -8.59418, 16.5623, -7.36375, 12.6171, -6.25072, 7.49988, -5.60603, 1.44528, -5.56918, -1.86034, -5.78164, -5.31246, -6.28707, -8.88175, -7.12941, -12.5389, -8.35259, -16.2547)

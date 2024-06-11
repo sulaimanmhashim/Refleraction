@@ -1,10 +1,11 @@
 extends Control
 
-@onready var pauseButton = $AspectRatioContainer/Pause
+@onready var pauseButton = $Pause
 @onready var victoryScreen = $Victory_Screen
 @onready var victoryAnim = $Victory_Screen/AnimationPlayer
 
 var animPlaying
+var is_paused
 
 func _ready():
 	var popup=pauseButton.get_popup()
@@ -23,15 +24,26 @@ func _process(_delta):
 		victoryScreen.hide()
 
 func _on_pause_toggled(_toggled_on):
-	var is_paused = get_tree().paused
+	is_paused = get_tree().paused
 	if is_paused:
 		get_tree().paused=false
+		$AnimationPlayer.play("RESET")
 	elif not is_paused:
-		get_tree().paused=true
+		$AnimationPlayer.play("BLUR")
+		
 
 func file_menu(id):
-	if id==1:
+	if id==0:
+		if is_paused:
+			get_tree().paused=false
+			$AnimationPlayer.play("RESET")
+	if id==2:
 		get_tree().change_scene_to_file("res://ui/Level_Select.tscn")
+	
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://ui/Level_Select.tscn")
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name=="BLUR":
+		get_tree().paused=true

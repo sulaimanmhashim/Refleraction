@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ixwe51mcso6j" path="res://level_prop/Air.tscn" id="3_2polp"]
 [ext_resource type="PackedScene" uid="uid://djajthv4aksdk" path="res://level_prop/Emitter.tscn" id="3_j2ih6"]
 
+
 [node name="Level3" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

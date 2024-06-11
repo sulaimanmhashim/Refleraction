@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djajthv4aksdk" path="res://level_prop/Emitter.tscn" id="3_eaj5r"]
 [ext_resource type="PackedScene" uid="uid://rxsxs7brmcjs" path="res://level_prop/Absorber.tscn" id="4_di38x"]
 
+
 [node name="Level2" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

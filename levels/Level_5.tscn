@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://c54df33xo1xd3"]
 
 [ext_resource type="PackedScene" uid="uid://dhgrdfn5b2wr5" path="res://ui/Overlay.tscn" id="1_hodfq"]
-[ext_resource type="PackedScene" uid="uid://1mvijyak3vuq" path="res://level_prop/Glass.tscn" id="2_6nbfo"]
-[ext_resource type="PackedScene" uid="uid://bh63x1bmtey25" path="res://level_prop/Water.tscn" id="3_knadv"]
+[ext_resource type="PackedScene" uid="uid://ixwe51mcso6j" path="res://level_prop/Air.tscn" id="2_yfkdp"]
 [ext_resource type="PackedScene" uid="uid://bsji8jka3uei0" path="res://level_prop/Mirror.tscn" id="4_x300n"]
 [ext_resource type="PackedScene" uid="uid://rxsxs7brmcjs" path="res://level_prop/Absorber.tscn" id="5_eq70j"]
+[ext_resource type="PackedScene" uid="uid://cpai65ovsybl7" path="res://level_prop/Concave_Mirror.tscn" id="5_otcec"]
 [ext_resource type="PackedScene" uid="uid://djajthv4aksdk" path="res://level_prop/Emitter.tscn" id="6_l5056"]
 
 [node name="Level5" type="Node2D"]
@@ -13,20 +13,27 @@
 
 [node name="Overlay" parent="CanvasLayer" instance=ExtResource("1_hodfq")]
 
-[node name="Glass" parent="." instance=ExtResource("2_6nbfo")]
-position = Vector2(576, 162)
-scale = Vector2(576, 162)
-
-[node name="Water" parent="." instance=ExtResource("3_knadv")]
-position = Vector2(576, 486)
-scale = Vector2(576, 162)
-
-[node name="Mirror" parent="." instance=ExtResource("4_x300n")]
-position = Vector2(576, 125)
-rotation = 1.5708
+[node name="Air" parent="." instance=ExtResource("2_yfkdp")]
+position = Vector2(576, 324)
+scale = Vector2(576, 324)
 
 [node name="Absorber" parent="." instance=ExtResource("5_eq70j")]
-position = Vector2(902, 162)
+position = Vector2(902, 324)
 
 [node name="Emitter" parent="." instance=ExtResource("6_l5056")]
-position = Vector2(250, 162)
+position = Vector2(250, 324)
+
+[node name="ConcaveMirror1" parent="." instance=ExtResource("5_otcec")]
+position = Vector2(576, 498)
+rotation = 1.5708
+scale = Vector2(8, 8)
+
+[node name="ConcaveMirror2" parent="." instance=ExtResource("5_otcec")]
+position = Vector2(576, 150)
+rotation = -1.5708
+scale = Vector2(8, 8)
+
+[node name="Mirror" parent="." instance=ExtResource("4_x300n")]
+position = Vector2(576, 324)
+rotation = 1.5708
+scale = Vector2(0.7, 0.6)

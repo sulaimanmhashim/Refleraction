@@ -1,0 +1,127 @@
+[gd_scene load_steps=20 format=3 uid="uid://cpai65ovsybl7"]
+
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape.gd" id="1_r4r1j"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="2_wo8ba"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_k28mk"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_5self"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="5_n6j17"]
+
+[sub_resource type="Resource" id="Resource_i0ntm"]
+script = ExtResource("2_wo8ba")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_aej73"]
+script = ExtResource("3_k28mk")
+position = Vector2(-2, -10)
+point_in = Vector2(5, 10)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_i0ntm")
+
+[sub_resource type="Resource" id="Resource_tvyoc"]
+script = ExtResource("2_wo8ba")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_x12ll"]
+script = ExtResource("3_k28mk")
+position = Vector2(2, -10)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_tvyoc")
+
+[sub_resource type="Resource" id="Resource_qokww"]
+script = ExtResource("2_wo8ba")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_pl733"]
+script = ExtResource("3_k28mk")
+position = Vector2(2, 10)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_qokww")
+
+[sub_resource type="Resource" id="Resource_4ra7w"]
+script = ExtResource("2_wo8ba")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_naxf3"]
+script = ExtResource("3_k28mk")
+position = Vector2(-2, 10)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_4ra7w")
+
+[sub_resource type="Resource" id="Resource_qdxs7"]
+script = ExtResource("2_wo8ba")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_ni5sw"]
+script = ExtResource("3_k28mk")
+position = Vector2(-2, -10)
+point_in = Vector2(5, 10)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_qdxs7")
+
+[sub_resource type="Resource" id="Resource_31dpr"]
+script = ExtResource("4_5self")
+_points = {
+0: SubResource("Resource_aej73"),
+1: SubResource("Resource_x12ll"),
+2: SubResource("Resource_pl733"),
+3: SubResource("Resource_naxf3"),
+4: SubResource("Resource_ni5sw")
+}
+_point_order = Array[int]([0, 1, 2, 3, 4])
+_constraints = {
+Array[int]([0, 4]): 15
+}
+_next_key = 5
+_material_overrides = {}
+tessellation_stages = 5
+tessellation_tolerance = 4.0
+curve_bake_interval = 20.0
+
+[sub_resource type="Gradient" id="Gradient_j4oq2"]
+offsets = PackedFloat32Array(0.525424)
+colors = PackedColorArray(0.568627, 0.568627, 0.568627, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_exps1"]
+gradient = SubResource("Gradient_j4oq2")
+
+[sub_resource type="Resource" id="Resource_h5i4c"]
+script = ExtResource("5_n6j17")
+_edge_meta_materials = Array[Resource("res://addons/rmsmartshape/materials/edge_material_metadata.gd")]([])
+fill_textures = Array[Texture2D]([SubResource("GradientTexture1D_exps1")])
+fill_texture_z_index = 0
+fill_texture_show_behind_parent = false
+fill_texture_scale = 1.0
+fill_texture_absolute_position = false
+fill_texture_absolute_rotation = false
+fill_texture_offset = Vector2(0, 0)
+fill_texture_angle_offset = 0.0
+fill_mesh_offset = 0.0
+render_offset = 0.0
+
+[node name="ConcaveMirror" type="Node2D" groups=["mirror"]]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["mirror"]]
+
+[node name="SS2D_Shape" type="Node2D" parent="StaticBody2D" groups=["mirror"]]
+script = ExtResource("1_r4r1j")
+_points = SubResource("Resource_31dpr")
+shape_material = SubResource("Resource_h5i4c")
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" groups=["mirror"]]
+visible = false
+modulate = Color(1, 1, 1, 0.3)
+polygon = PackedVector2Array(-2.18992, -10.1239, 2.10355, -10.1036, 2.10355, 10.1036, -2.18374, 10.1234, -1.29731, 8.28109, -0.68211, 6.30847, -0.125722, 3.74988, 0.196703, 0.722623, 0.215248, -0.930168, 0.108985, -2.65621, -0.143762, -4.44083, -0.564959, -6.26939, -1.17657, -8.12723)
