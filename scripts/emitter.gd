@@ -1,6 +1,6 @@
 extends Node2D
 
-var MAX_BOUNCES = 10
+var MAX_BOUNCES = 20
 var MAX_LENGTH = 1000
 
 @onready var line = $Line2D

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_5self"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="5_n6j17"]
 
-[sub_resource type="Resource" id="Resource_i0ntm"]
+[sub_resource type="Resource" id="Resource_42wbo"]
 script = ExtResource("2_wo8ba")
 texture_idx = 0
 flip = false
@@ -17,9 +17,9 @@ script = ExtResource("3_k28mk")
 position = Vector2(-2, -10)
 point_in = Vector2(5, 10)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_i0ntm")
+properties = SubResource("Resource_42wbo")
 
-[sub_resource type="Resource" id="Resource_tvyoc"]
+[sub_resource type="Resource" id="Resource_mu7ly"]
 script = ExtResource("2_wo8ba")
 texture_idx = 0
 flip = false
@@ -30,9 +30,9 @@ script = ExtResource("3_k28mk")
 position = Vector2(2, -10)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_tvyoc")
+properties = SubResource("Resource_mu7ly")
 
-[sub_resource type="Resource" id="Resource_qokww"]
+[sub_resource type="Resource" id="Resource_weobt"]
 script = ExtResource("2_wo8ba")
 texture_idx = 0
 flip = false
@@ -43,9 +43,9 @@ script = ExtResource("3_k28mk")
 position = Vector2(2, 10)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_qokww")
+properties = SubResource("Resource_weobt")
 
-[sub_resource type="Resource" id="Resource_4ra7w"]
+[sub_resource type="Resource" id="Resource_d6k11"]
 script = ExtResource("2_wo8ba")
 texture_idx = 0
 flip = false
@@ -56,9 +56,9 @@ script = ExtResource("3_k28mk")
 position = Vector2(-2, 10)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_4ra7w")
+properties = SubResource("Resource_d6k11")
 
-[sub_resource type="Resource" id="Resource_qdxs7"]
+[sub_resource type="Resource" id="Resource_bjcn3"]
 script = ExtResource("2_wo8ba")
 texture_idx = 0
 flip = false
@@ -69,7 +69,7 @@ script = ExtResource("3_k28mk")
 position = Vector2(-2, -10)
 point_in = Vector2(5, 10)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_qdxs7")
+properties = SubResource("Resource_bjcn3")
 
 [sub_resource type="Resource" id="Resource_31dpr"]
 script = ExtResource("4_5self")

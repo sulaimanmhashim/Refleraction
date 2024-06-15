@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://csenlyvghf86s"]
+[gd_scene load_steps=10 format=3 uid="uid://csenlyvghf86s"]
 
 [ext_resource type="PackedScene" uid="uid://djajthv4aksdk" path="res://level_prop/Emitter.tscn" id="1_f867l"]
 [ext_resource type="PackedScene" uid="uid://dhgrdfn5b2wr5" path="res://ui/Overlay.tscn" id="1_kenjx"]
+[ext_resource type="PackedScene" uid="uid://bh63x1bmtey25" path="res://level_prop/Water.tscn" id="2_bstw4"]
 [ext_resource type="PackedScene" uid="uid://rxsxs7brmcjs" path="res://level_prop/Absorber.tscn" id="2_jo0ui"]
 [ext_resource type="PackedScene" uid="uid://ixwe51mcso6j" path="res://level_prop/Air.tscn" id="2_mglc2"]
-
-
+[ext_resource type="PackedScene" uid="uid://1mvijyak3vuq" path="res://level_prop/Glass.tscn" id="4_njgg7"]
+[ext_resource type="PackedScene" uid="uid://bsji8jka3uei0" path="res://level_prop/Mirror.tscn" id="5_mmu08"]
+[ext_resource type="PackedScene" uid="uid://cpai65ovsybl7" path="res://level_prop/Concave_Mirror.tscn" id="8_g2fwk"]
+[ext_resource type="PackedScene" uid="uid://c8m28dor6gyqv" path="res://level_prop/Covex_Mirror.tscn" id="9_moa8s"]
 
 [node name="Level1" type="Node2D"]
 
@@ -14,11 +17,44 @@
 [node name="Overlay" parent="CanvasLayer" instance=ExtResource("1_kenjx")]
 
 [node name="Air" parent="." instance=ExtResource("2_mglc2")]
+position = Vector2(192, 324)
+scale = Vector2(192, 324)
+
+[node name="Water" parent="." instance=ExtResource("2_bstw4")]
 position = Vector2(576, 324)
-scale = Vector2(576, 324)
+scale = Vector2(192, 324)
+
+[node name="Glass" parent="." instance=ExtResource("4_njgg7")]
+position = Vector2(960, 324)
+scale = Vector2(192, 324)
 
 [node name="Emitter" parent="." instance=ExtResource("1_f867l")]
-position = Vector2(200, 324)
+position = Vector2(100, 548)
 
 [node name="Absorber" parent="." instance=ExtResource("2_jo0ui")]
-position = Vector2(952, 324)
+position = Vector2(900, 117)
+
+[node name="Mirror" parent="." instance=ExtResource("5_mmu08")]
+position = Vector2(300, 548)
+rotation = -0.785398
+scale = Vector2(0.5, 0.7)
+
+[node name="Mirror2" parent="." instance=ExtResource("5_mmu08")]
+position = Vector2(300, 260)
+rotation = -0.785398
+scale = Vector2(0.5, 0.7)
+
+[node name="Mirror3" parent="." instance=ExtResource("5_mmu08")]
+position = Vector2(576, 260)
+rotation = 0.785398
+scale = Vector2(0.5, 0.7)
+
+[node name="CovexMirror" parent="." instance=ExtResource("9_moa8s")]
+position = Vector2(730, 99)
+rotation = 3.87812
+scale = Vector2(5, 5)
+
+[node name="ConcaveMirror" parent="." instance=ExtResource("8_g2fwk")]
+position = Vector2(576, 544)
+rotation = 1.5708
+scale = Vector2(5, 5)

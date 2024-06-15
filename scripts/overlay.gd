@@ -37,7 +37,7 @@ func file_menu(id):
 		if is_paused:
 			get_tree().paused=false
 			$AnimationPlayer.play("RESET")
-	if id==2:
+	if id==1:
 		get_tree().change_scene_to_file("res://ui/Level_Select.tscn")
 	
 
